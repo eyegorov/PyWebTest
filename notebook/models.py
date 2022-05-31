@@ -6,13 +6,23 @@ from django.utils.translation import gettext_lazy as _  # Осуществляе
 
 
 class Note(models.Model):
-    """ """
+    """Класс Note поля заметки для БД
+    :param title: поле "Наименование заметки";
+    :param note: поле "Содержание заметки;
+    :param note_status: поле "Содержание заметки;
+    :param important_status: поле "Важно";
+    :param public: поле "Паблик";
+    :param create_at: поле "Время создания заметки";
+    :param update_at: поле "Время обновления заметки";
+    :param author_at: поле "Автор".
+
+    """
 
     class Status(models.IntegerChoices):
         """"Класс Product описывает отдельно взятый товар и его характеристики
-           :param ACTIVE: статус Активно
-           :param POSTPONED: статус Активно
-           :param COMPLETED: статус Завершено """
+            :param ACTIVE: статус Активно;
+           :param POSTPONED: статус Активно;
+           :param COMPLETED: статус Завершено. """
 
         ACTIVE = 0, _("Активно")
         POSTPONED = 1, _("Отложено")
@@ -29,7 +39,7 @@ class Note(models.Model):
                                   on_delete=models.CASCADE, verbose_name=_("Автор"))
 
     def date_time_plus(self) -> datetime:
-        """ Метод, возвращающий время + 1 день от текущего согласно ТЗ - Эталонный обьект datetime.now() (текущее время)
+        """ Метод, возвращающий время + 1 день от текущего согласно ТЗ - Эталонный объект datetime.now() (текущее время)
          плюс созданный объект времени (+ 1 день) """
         return datetime.now() + timedelta(days=1)  # https://pythonist.ru/kak-ispolzovat-obekt-timedelta-
         # dlya-raboty-s-datami-v-python/

@@ -18,5 +18,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('notebook.urls'))
+    path('notebook/', include('notebook.urls'))  # доп.префикс notebook для выделения приложения
 ]

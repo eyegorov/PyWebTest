@@ -39,7 +39,7 @@ class Note(models.Model):
                                   on_delete=models.CASCADE, verbose_name=_("Автор"))
 
     class Meta:
-        ordering = ["- create_at", "important_status"]  # сортировка по дате (от самой новой до самой старой,
+        ordering = ["-create_at", "important_status"]  # сортировка по дате (от самой новой до самой старой,
         # далее по важности
 
     def date_time_plus(self) -> datetime:

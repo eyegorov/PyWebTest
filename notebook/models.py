@@ -38,6 +38,10 @@ class Note(models.Model):
     author_at = models.ForeignKey(get_user_model(),
                                   on_delete=models.CASCADE, verbose_name=_("Автор"))
 
+    class Meta:
+        ordering = ["- create_at", "important_status"]  # сортировка по дате (от самой новой до самой старой,
+        # далее по важности
+
     def date_time_plus(self) -> datetime:
         """ Метод, возвращающий время + 1 день от текущего согласно ТЗ - Эталонный объект datetime.now() (текущее время)
          плюс созданный объект времени (+ 1 день) """

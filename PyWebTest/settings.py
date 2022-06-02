@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     'notebook',
     'login',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

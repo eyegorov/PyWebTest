@@ -6,23 +6,23 @@ from django.utils.translation import gettext_lazy as _  # Осуществляе
 
 
 class Note(models.Model):
-    """Класс Note поля заметки для БД
-    :param title: поле "Наименование заметки";
-    :param note: поле "Содержание заметки;
-    :param note_status: поле "Содержание заметки;
-    :param important_status: поле "Важно";
-    :param public: поле "Паблик";
-    :param create_at: поле "Время создания заметки";
-    :param update_at: поле "Время обновления заметки";
-    :param author_at: поле "Автор".
-
-    """
+    # """Класс Note поля заметки для БД
+    # :param title: поле "Наименование заметки";
+    # :param note: поле "Содержание заметки;
+    # :param note_status: поле "Содержание заметки;
+    # :param important_status: поле "Важно";
+    # :param public: поле "Паблик";
+    # :param create_at: поле "Время создания заметки";
+    # :param update_at: поле "Время обновления заметки";
+    # :param author_at: поле "Автор".
+    #
+    # """
 
     class Status(models.IntegerChoices):
-        """"Класс Product описывает отдельно взятый товар и его характеристики
-            :param ACTIVE: статус Активно;
-           :param POSTPONED: статус Активно;
-           :param COMPLETED: статус Завершено. """
+        # """"Класс Product описывает отдельно взятый товар и его характеристики
+        #     :param ACTIVE: статус Активно;
+        #    :param POSTPONED: статус Активно;
+        #    :param COMPLETED: статус Завершено. """
 
         ACTIVE = 0, _("Активно")
         POSTPONED = 1, _("Отложено")
@@ -30,9 +30,9 @@ class Note(models.Model):
 
     title = models.CharField(max_length=250, verbose_name=_("Наименование заметки"))
     note = models.TextField(max_length=10000, verbose_name=_("Содержание заметки"))
-    note_status = models.IntegerField(default=Status.ACTIVE, choices=Status.ACTIVE, verbose_name=_("Статус"))
+    note_status = models.IntegerField(default=Status.ACTIVE, choices=Status.choices, verbose_name=_("Статус"))
     important_status = models.BooleanField(default=False, verbose_name=_("Важно"))
-    public = models.BooleanField(default=False, verbose_name=_("Важно"))
+    public = models.BooleanField(default=False, verbose_name=_("Публичная"))
     create_at = models.DateField(auto_now=True, verbose_name=_("Время создания заметки"))
     update_at = models.DateField(auto_now_add=True, verbose_name=_("Время обновления заметки"))  # ок
     author_at = models.ForeignKey(get_user_model(),

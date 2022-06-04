@@ -32,7 +32,7 @@ class Note(models.Model):
     note = models.TextField(max_length=10000, verbose_name=_("Содержание заметки"))
     note_status = models.IntegerField(default=Status.ACTIVE, choices=Status.choices, verbose_name=_("Статус"))
     important_status = models.BooleanField(default=False, verbose_name=_("Важно"))
-    public = models.BooleanField(default=False, verbose_name=_("Публичная"))
+    public_status = models.BooleanField(default=False, verbose_name=_("Публичная"))
     create_at = models.DateField(auto_now=True, verbose_name=_("Время создания заметки"))
     update_at = models.DateField(auto_now_add=True, verbose_name=_("Время обновления заметки"))  # ок
     author_at = models.ForeignKey(get_user_model(),
@@ -41,6 +41,8 @@ class Note(models.Model):
     class Meta:
         ordering = ["-create_at", "important_status"]  # сортировка по дате (от самой новой до самой старой,
         # далее по важности
+        verbose_name = _("Запись")
+        verbose_name_plural = _("Записи")
 
     def date_time_plus(self) -> datetime:
         """ Метод, возвращающий время + 1 день от текущего согласно ТЗ - Эталонный объект datetime.now() (текущее время)

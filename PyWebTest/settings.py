@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'notebook',
     'login',
     'rest_framework',
+    'django_filters',
 ]
 
 MIDDLEWARE = [

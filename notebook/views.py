@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views import View
 from django.views.generic import TemplateView
 
-SERVER_VERSION = "0.0.1"
+SERVER_VERSION = "0.0.1"  # Информация о текущей версии сайта
 
 
 class IndexView(View):
@@ -20,6 +20,8 @@ class AboutView(View):  # нет возможности оттестироват
             request,
             template_name=template_name,
             context=context)
+
+
 # Дополнительно вывести User по заданию
 
 class AboutTemplateView(TemplateView):  # есть возможность оттестировать на ошибки

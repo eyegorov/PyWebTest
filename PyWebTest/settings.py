@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'notebook',
+    'notebook_api',
     'login',
     'rest_framework',
     'django_filters',

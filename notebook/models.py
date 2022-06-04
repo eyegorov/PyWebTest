@@ -26,7 +26,7 @@ class Note(models.Model):
 
         ACTIVE = 0, _("Активно")
         POSTPONED = 1, _("Отложено")
-        COMPLETED = 2, _("Завершено")
+        COMPLETED = 2, _("Выполнено")
 
     title = models.CharField(max_length=250, verbose_name=_("Наименование заметки"))
     note = models.TextField(max_length=10000, verbose_name=_("Содержание заметки"))
@@ -41,8 +41,8 @@ class Note(models.Model):
     class Meta:
         ordering = ["-create_at", "important_status"]  # сортировка по дате (от самой новой до самой старой,
         # далее по важности
-        verbose_name = _("Запись")
-        verbose_name_plural = _("Записи")
+        verbose_name = _("Запись") # Формат вывода
+        verbose_name_plural = _("Записи") # Формат вывода
 
     def date_time_plus(self) -> datetime:
         """ Метод, возвращающий время + 1 день от текущего согласно ТЗ - Эталонный объект datetime.now() (текущее время)

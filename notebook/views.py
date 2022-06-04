@@ -1,8 +1,7 @@
 from django.shortcuts import render
 from django.views import View
 from django.views.generic import TemplateView
-
-SERVER_VERSION = "0.0.1"  # Информация о текущей версии сайта
+from PyWebTest.local_settings import SERVER_VERSION  # Текущая версия сервера
 
 
 class IndexView(View):

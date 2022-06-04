@@ -1,4 +1,4 @@
-from django_filters import rest_framework as filters
+from django_filters import rest_framework as filters  # встроенные Django filters
 
 from notebook.models import Note
 
@@ -8,4 +8,4 @@ class NoteFilter(filters.FilterSet):
 
     class Meta:
         model = Note
-        fields = ['note_status', 'importance_status', 'public_status']  # from notebook/models.py
+        fields = ['note_status', 'important_status', 'public_status']  # from notebook/models.py

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views import View
 from django.views.generic import TemplateView
+
 from PyWebTest.local_settings import SERVER_VERSION  # Текущая версия сервера
 
 
@@ -13,15 +14,14 @@ class AboutView(View):  # нет возможности оттестироват
     def get(self, request):
         template_name = "notebook/version.html"
         context = {
-            "server_version": SERVER_VERSION
+            "server_version": SERVER_VERSION,  # информация о текущей версии сервера
+            "user_name": request.user  # информация о текущем пользователе
         }
         return render(
             request,
             template_name=template_name,
             context=context)
 
-
-# Дополнительно вывести User по заданию
 
 class AboutTemplateView(TemplateView):  # есть возможность оттестировать на ошибки
     template_name = "notebook/version.html"

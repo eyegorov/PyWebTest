@@ -20,12 +20,12 @@ class NoteListCreateAPIView(generics.ListCreateAPIView):
     def get_queryset(self):
         """Метод, который позволяет автору смотреть свои заметки или заметки других авторов, помеченные как public"""
         queryset = super().get_queryset()
-        return queryset.filter(Q(author=self.request.user) & Q(public=True))  # Заметки этого author или
+        return queryset.filter(Q(author_at=self.request.user) & Q(public_status=True))  # Заметки этого author или
         # заметки статуса public
 
     def perform_create(self, serializer):
         """Метод для сохранения созданой заметки за автором"""
-        serializer.save(author=self.request.user)
+        serializer.save(author_at=self.request.user)
         return serializer
 
 
@@ -42,4 +42,4 @@ class PublicNoteListAPIView(ListAPIView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        return queryset.filter(public=True)
+        return queryset.filter(public_status=True)

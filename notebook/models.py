@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 
-from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import gettext_lazy as _  # Осуществляет перевод заголовков на анг язык
 
@@ -35,14 +35,13 @@ class Note(models.Model):
     public_status = models.BooleanField(default=False, verbose_name=_("Публичная"))
     create_at = models.DateField(auto_now=True, verbose_name=_("Время создания заметки"))
     update_at = models.DateField(auto_now_add=True, verbose_name=_("Время обновления заметки"))  # ок
-    author_at = models.ForeignKey(get_user_model(),
-                                  on_delete=models.CASCADE, verbose_name=_("Автор"))
+    author_at = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Автор')
 
     class Meta:
         ordering = ["-create_at", "important_status"]  # сортировка по дате (от самой новой до самой старой,
         # далее по важности
-        verbose_name = _("Запись") # Формат вывода
-        verbose_name_plural = _("Записи") # Формат вывода
+        verbose_name = _("Запись")  # Формат вывода
+        verbose_name_plural = _("Записи")  # Формат вывода
 
     def date_time_plus(self) -> datetime:
         """ Метод, возвращающий время + 1 день от текущего согласно ТЗ - Эталонный объект datetime.now() (текущее время)

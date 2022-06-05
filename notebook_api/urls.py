@@ -20,7 +20,6 @@ from . import views
 
 urlpatterns = [
     path('notebook_api/', views.NoteListCreateAPIView.as_view()),
-    path('notebook_api/detail', views.NoteDetailUpdateDeleteAPIView.as_view()),
+    path('notebook_api/<int:pk>', views.NoteDetailUpdateDeleteAPIView.as_view()),
 
 ]
-

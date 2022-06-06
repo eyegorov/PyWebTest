@@ -31,7 +31,7 @@ class NoteListCreateAPIView(generics.ListCreateAPIView):
 
 class NoteDetailUpdateDeleteAPIView(generics.RetrieveUpdateDestroyAPIView):
     """Класс представления для вывода данных о конкретной заметке, ее изменения и удаления"""
-    permission_classes = [IsAuthenticated & permissions.OnlyAuthorEditNote]
+    permission_classes = [IsAuthenticated & permissions.OnlyAuthorEditNote & permissions.OnlyAuthorViewNonPublicNote]
     queryset = Note.objects.all()
     serializer_class = serializers.NoteSerializer
 
